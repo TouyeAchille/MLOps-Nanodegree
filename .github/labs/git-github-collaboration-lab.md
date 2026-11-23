@@ -15,11 +15,9 @@ This repository contains hands-on practical work for learning professional versi
 
 ## 1. Prerequisites
 
--`Github`: An account on GitHub. To sign up, go to <a href="https://github.com/signup"> github.com </a>
+- `Github`: An account on GitHub. To sign up, go to <a href="https://github.com/signup"> github.com </a>
 
-- `uv`: An extremely fast **Python package and project manager.** uv manages project dependencies, packages and environments using the `pyproject.toml`file.
-
-You can find installation here <a href="https://docs.astral.sh/uv/getting-started/installation/"> Install uv </a>
+- `uv`: An extremely fast **Python package and project manager.** uv manages project dependencies, packages and environments using the `pyproject.toml`file. You can find installation here <a href="https://docs.astral.sh/uv/getting-started/installation/"> Install uv </a>
 
 - `VS Code` Download Visual Studio Code. Free, built on open source, and runs everywhere. You can find installation here  <a href="https://code.visualstudio.com/download"> Install VS Code </a>
 
