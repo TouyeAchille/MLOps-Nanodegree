@@ -35,7 +35,7 @@ A repository is where you keep code and files for a software project on GitHub. 
 **Follow these steps to create your first repository:**
 
 1. In the upper-right corner of any GitHub page, select **+**, then click **New repository**.
-2. In **Repository name**, enter `MLOps-Foundations-skills-git_github`.
+2. In **Repository name**, enter `salaries_prediction`.
 3. In **Description**, enter a short description such as `Hands-on MLOps Git and GitHub practical`.
 4. Select **Public** in **Choose visibility**.
 5. Select **Add README**.
@@ -80,7 +80,7 @@ On your local computer, type
 Then go to
 
 ```bash
-   cd MLOps-Foundations-skills-git_github
+   cd salaries_prediction
 ```
 
 Then, Run these commands to Check the Status of your files :
@@ -135,7 +135,7 @@ Complete this step from the terminal in the local clone of your GitHub repositor
 ├── notebooks/
 │   └── experiments.ipynb
 ├── src/
-│   └── mlops_git_github_skills_lab/
+│   └── salaries_prediction/
 │       ├── __init__.py
 │       ├── commons/
 │       ├── io/
@@ -162,10 +162,10 @@ In MLOps, The initialization phase establishes a standardized, scalable, and rep
 Make sure the terminal is inside your cloned repository. Then run:
 
 ```bash
-uv init --python 3.11 --package --name mlops_git_github_skills_lab
+uv init --python 3.11 --package --name salaries_prediction
 ```
 
-This command creates `pyproject.toml` and the initial package under `src/mlops_git_github_skills_lab/`.
+This command creates `pyproject.toml` and the initial package under `src/salaries_prediction/`.
 
 Run these commands to Check the Status of your files :
 
@@ -215,7 +215,7 @@ Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
  new file:   .python-version
  new file:   pyproject.toml
- new file:   src/mlops_git_github_skills_lab/__init__.py
+ new file:   src/salaries_prediction/__init__.py
 ```
 
 You can see that the files are **staged** because they appear under the `Changes to be committed` heading. Anything that remains `unstaged` will not be included in this commit. It will remain as a modified or untracked file in your working tree.
@@ -235,7 +235,7 @@ Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
  new file:   .python-version
  new file:   pyproject.toml
- new file:   src/mlops_git_github_skills_lab/__init__.py
+ new file:   src/salaries_prediction/__init__.py
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -262,7 +262,7 @@ index 308cb22..76be0fa 100644
 +++ b/pyproject.toml
 @@ -1,7 +1,7 @@
  [project]
- name = "mlops-git-github-skills-lab"
+ name = "salaries-prediction"
  version = "0.1.0"
 -description = "Add your description here"
 +description = "Hands-on MLOps Git and GitHub practical"
@@ -283,7 +283,7 @@ Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
  new file:   .python-version
  new file:   pyproject.toml
- new file:   src/mlops_git_github_skills_lab/__init__.py
+ new file:   src/salaries_prediction/__init__.py
 ```
 
 
@@ -388,9 +388,9 @@ Use `mkdir` to create directories:
 mkdir -p .agents/skills
 mkdir -p .github/actions/setup-venv .github/workflows
 mkdir -p docs notebooks tasks env
-mkdir -p src/mlops_git_github_skills_lab/io
-mkdir -p src/mlops_git_github_skills_lab/job
-mkdir -p src/mlops_git_github_skills_lab/commons
+mkdir -p src/salaries_prediction/io
+mkdir -p src/salaries_prediction/job
+mkdir -p src/salaries_prediction/commons
 mkdir -p tests/integration_tests tests/unit_tests tests/e2e_tests
 ```
 
@@ -408,17 +408,17 @@ touch .github/workflows/tests.yml
 touch .pre-commit-config.yaml AGENTS.md Makefile CONTRIBUTING.md
 touch notebooks/experiments.ipynb
 touch env/local.env env/dev.env env/preprod.env env/prod.env
-touch src/mlops_git_github_skills_lab/__init__.py
-touch src/mlops_git_github_skills_lab/scripts.py
-touch src/mlops_git_github_skills_lab/io/__init__.py
-touch src/mlops_git_github_skills_lab/io/writer.py
-touch src/mlops_git_github_skills_lab/io/reader.py
-touch src/mlops_git_github_skills_lab/io/base.py
-touch src/mlops_git_github_skills_lab/commons/__init__.py
-touch src/mlops_git_github_skills_lab/commons/utils.py
-touch src/mlops_git_github_skills_lab/commons/constants.py
-touch src/mlops_git_github_skills_lab/commons/exception.py
-touch src/mlops_git_github_skills_lab/job/__init__.py
+touch src/salaries_prediction/__init__.py
+touch src/salaries_prediction/scripts.py
+touch src/salaries_prediction/io/__init__.py
+touch src/salaries_prediction/io/writer.py
+touch src/salaries_prediction/io/reader.py
+touch src/salaries_prediction/io/base.py
+touch src/salaries_prediction/commons/__init__.py
+touch src/salaries_prediction/commons/utils.py
+touch src/salaries_prediction/commons/constants.py
+touch src/salaries_prediction/commons/exception.py
+touch src/salaries_prediction/job/__init__.py
 touch tasks/checkers.mk tasks/formatters.mk tasks/installers.mk
 touch tasks/helpers.mk tasks/inits.mk
 touch tests/integration_tests/__init__.py
@@ -469,9 +469,6 @@ git status
 
 `git log -1 --oneline` displays the latest commit. `git status` confirms whether the working tree still contains unstaged or untracked changes.
 
-uv run pre-commit install in your repository.
-
-Install and enable the pre-commit hook:
 
 ```bash
 uv run pre-commit install
@@ -479,14 +476,14 @@ uv run pre-commit install
 
 ## 5. Protect the Main Branch
 
-In the GitHub repository, open **Settings > Branches** and add a branch protection rule for `main`.
-
+In the GitHub repository, open **Settings > Branches** and add a branch protection rule for `main` or `master`. depend how you default branch is called
+`
 Require:
 
 - a Pull Request before merging;
 - at least one approving review;
 - passing status checks;
-- no direct pushes to `main`.
+- no direct pushes to `main` or `master`.
 
 This setup protects the primary codebase and prepares the project for professional collaboration.
 

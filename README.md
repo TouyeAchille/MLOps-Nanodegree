@@ -82,7 +82,7 @@ The target structure is a convention for reproducible MLOps work. It separates s
 ├── notebooks/
 │   └── experiments.ipynb
 ├── src/
-│   └── mlops_git_github_skills_lab/
+│   └── salaries_prediction/
 │       ├── commons/
 │       ├── io/
 │       └── job/
@@ -103,7 +103,7 @@ The target structure is a convention for reproducible MLOps work. It separates s
 Run these commands after cloning the repository:
 
 ```bash
-cd MLOps-Foundations-skills-git_github
+cd salaries_prediction
 uv sync
 git status
 ```

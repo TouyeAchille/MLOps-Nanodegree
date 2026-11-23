@@ -1,0 +1,84 @@
+# =============================================================================
+# Pre-commit hooks configuration
+# =============================================================================
+# Docs   : https://pre-commit.com
+# Hooks  : https://pre-commit.com/hooks.html
+
+default_language_version:
+  python: python3.11
+
+default_install_hook_types:
+  - pre-commit
+  - commit-msg
+  - pre-push
+
+exclude: '^notebooks/'
+
+repos:
+  -   repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v6.0.0
+      hooks:
+        - id: check-added-large-files
+        - id: check-case-conflict
+        - id: check-merge-conflict
+        - id: check-toml
+        - id: check-yaml
+        - id: debug-statements
+        - id: detect-private-key
+        - id: end-of-file-fixer
+        - id: mixed-line-ending
+        - id: trailing-whitespace
+
+  # linter and formatters
+  -   repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.17.6
+      hooks:
+        - id: ruff-check
+          args:
+            - --fix
+            - --config=pyproject.toml
+
+        - id: ruff-format
+          args:
+            - --config=pyproject.toml
+
+  # Static type checker (config in [tool.mypy] of pyproject.toml)
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v2.4.1
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - pydantic~=2.14.4
+          - pydantic-settings~=2.16.3
+        args:
+          - --config-file=pyproject.toml
+
+
+  # Docstring linter (config in [tool.pydoclint] of pyproject.toml): enforces
+  # Google-style docstrings, accurate Args/Returns/Yields/Raises sections,
+  # and complete class Attributes documentation across src/.
+  - repo: https://github.com/jsh9/pydoclint
+    rev: 0.12.0
+    hooks:
+      - id: pydoclint
+        args:
+          - --config=pyproject.toml
+
+  # Security linter for common Python vulnerabilities (config in
+  # [tool.bandit] of pyproject.toml).
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.9.4
+    hooks:
+      - id: bandit
+        args:
+          - --configfile=pyproject.toml
+        additional_dependencies:
+          - 'bandit[toml]'
+
+
+  # Secret scanner: detects hardcoded credentials, tokens, and API keys
+  # before they are committed
+  #- repo: https://github.com/gitleaks/gitleaks
+    #rev: v8.30.0
+    #hooks:
+     # - id: gitleaks

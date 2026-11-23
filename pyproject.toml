@@ -1,16 +1,109 @@
 [project]
-name = "mlops-git-github-skills-lab"
+name = "salaries-prediction"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
     { name = "TouyeAchille", email = "touyejunior@gmail.com" }
 ]
-requires-python = ">=3.11"
-dependencies = []
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "codetiming>=1.4.0",
+    "humanfriendly>=10.0",
+    "loguru>=0.8.0",
+    "pydantic>=2.14.4",
+    "pydantic-settings>=2.16.3",
+]
+
+
+[dependency-groups]
+checkers = [
+    "pydoclint>=0.12.0",
+    "ruff>=0.17.5",
+]
+commits = [
+    "commitizen>=4.19.4",
+]
+docs = [
+    "mkdocs>=1.6.1",
+]
+formatters = [
+    "mypy>=2.4.1",
+    "pre-commit>=4.7.0",
+]
+notebooks = [
+    "ipykernel>=7.4.0",
+]
+security = [
+    "bandit>=1.9.4",
+]
+test = [
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.uv]
+default-groups = [
+    "checkers",
+    "commits",
+    "docs",
+    "formatters",
+    "security",
+    "notebooks",
+    "test"
+]
+
+[tool.ruff]
+fix = false
+indent-width = 4
+line-length = 120
+target-version = "py311"
+exclude = ["notebooks/"]
+
+
+[tool.ruff.lint]
+select = [
+    "I",      # isort: import sorting
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = 88
+
+
+[tool.mypy]
+pretty = true
+python_version = "3.11"
+check_untyped_defs = true
+ignore_missing_imports = true
+no_namespace_packages = true
+files = ["src","tests"]
+
+[tool.bandit]
+targets = ["src"]
+exclude_dirs = ["tests"]
+recursive = true
+
+[tool.pydoclint]
+style = "google"
+exclude = '\.git|\.venv|tests|build|dist'
+arg-type-hints-in-docstring = true
+arg-type-hints-in-signature = true
+check-arg-order = true
+check-return-types = true
+check-yield-types = true
+allow-init-docstring = true
+ignore-private-args = false
+check-class-attributes = true
+skip-checking-raises = true
+check-style-mismatch = true
 
 [project.scripts]
-mlops-git-github-skills-lab = "mlops_git_github_skills_lab:main"
+salaries-prediction = "salaries_prediction:main"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
