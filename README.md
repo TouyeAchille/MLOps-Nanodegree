@@ -1,4 +1,7 @@
-# MLOps Foundations: Git and GitHub
+# MLOps-Nanodegree
+A Practical MLOps Engineering Program
+
+From data engineering to production ML.
 
 This repository contains hands-on practical work for learning professional version-control workflows and reproducible MLOps project organization.
 
