@@ -1,29 +1,23 @@
 # MLOps-Nanodegree
-A Practical MLOps Engineering Program
+A Practical MLOps Engineering Program. From data engineering to production ML.
 
-From data engineering to production ML.
-
-This repository contains hands-on practical work for learning professional version-control workflows and reproducible MLOps project organization.
 
 ## Learning objectives
 
-At the end of these practicals, students will be able to:
+By completing the practicals in order, you will learn to:
 
-- create and clone a GitHub repository;
-- initialize a structured Python package;
-- use the working tree, staging area, and commit history;
-- create, merge, and synchronize branches;
-- use issues and Pull Requests for collaboration;
-- protect a shared branch and use automated checks.
+- organize and collaborate on an MLOps project using Git and GitHub;
+- scaffold reusable Python projects from templates;
+- apply template changes to generated projects and verify the results.
 
 ## Practicals
 
-| Practical | Topic | Lab guide |
-| --- | --- | --- |
-| TP1 | Git, GitHub, branches, merges, and Pull Requests | [Git/GitHub collaboration lab](.github/labs/git-github-collaboration-lab.md) |
-| TP2 | Cookiecutter, Cruft, Jinja2, and project scaffolding | `lab guide to be added` |
+| Practical | Focus | What you will do | Lab guide |
+| --- | --- | --- | --- |
+| TP1 | Git and GitHub collaboration | Create a repository, organize the project, commit changes, work with branches, and open a Pull Request. | [Git/GitHub collaboration lab](.github/labs/git-github-collaboration-lab.md) |
+| TP2 | Reusable project templating | Build and use a Cookiecutter template, render project variables with Jinja2, and manage template updates with Cruft. | [MLOps project templating lab](.github/labs/mlops-project-templating-lab.md) |
 
-The numbered sections in TP1 should be completed in order:
+Complete the practicals in order. Within TP1, complete these sections in order:
 
 1. Create a GitHub repository.
 2. Clone the repository locally.
@@ -31,6 +25,8 @@ The numbered sections in TP1 should be completed in order:
 4. Track and commit changes.
 5. Create and merge branches.
 6. Open a Pull Request and protect the main branch.
+
+For TP2, follow the linked lab from prerequisites through template creation, project generation, Cruft updates, and validation.
 
 ## Prerequisites
 
@@ -66,7 +62,8 @@ The target structure is a convention for reproducible MLOps work. It separates s
 .
 ├── .github/
 │   ├── labs/
-│   │   └── git-github-collaboration-lab.md
+│   │   ├── git-github-collaboration-lab.md
+│   │   └── mlops-project-templating-lab.md
 │   └── workflows/
 ├── .gitignore
 ├── .pre-commit-config.yaml

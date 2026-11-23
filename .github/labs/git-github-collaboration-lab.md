@@ -4,7 +4,7 @@ In this practical, you create and configure the Git repository used throughout t
 
 ## Objectives
 
-By the end of this lab, you will be able to:
+This repository contains hands-on practical work for learning professional version-control workflows and reproducible MLOps project organization. By the end of this lab, you will be able to:
 
 - create and initialize a GitHub repository;
 - clone and configure a local repository;
@@ -113,45 +113,78 @@ Complete this step from the terminal in the local clone of your GitHub repositor
 
 ```text
 .
-├── .github/
-│   ├── labs/
-│   │   └── git-github-collaboration-lab.md
-│   └── workflows/
-├── .gitignore
-├── .pre-commit-config.yaml
-├── .python-version
-├── AGENTS.md
-├── LICENSE
-├── Makefile
-├── README.md
-├── pyproject.toml
-├── uv.lock
-├── docs/
-├── env/
-│   ├── dev.env
-│   ├── local.env
-│   ├── preprod.env
-│   └── prod.env
-├── notebooks/
-│   └── experiments.ipynb
-├── src/
-│   └── salaries_prediction/
-│       ├── __init__.py
-│       ├── commons/
-│       ├── io/
-│       ├── job/
-│       └── scripts.py
-├── tasks/
-│   ├── checkers.mk
-│   ├── formatters.mk
-│   ├── helpers.mk
-│   ├── installers.mk
-│   └── inits.mk
-└── tests/
-    ├── e2e_tests/
-    ├── integration_tests/
-    └── unit_tests/
+├── .agents/                         # Repository-specific agent configuration
+│   └── skills/                      # Skills available to repository agents
+│       └── .gitkeep                 # Keeps this initially empty directory in Git
+├── .dockerignore                    # Files excluded from Docker build contexts
+├── .env                             # Local environment variables; never commit secrets
+├── .env.examples                    # Safe example environment-variable names and values
+├── .github/                         # GitHub collaboration and automation configuration
+│   ├── actions/                     # Reusable GitHub Actions
+│   │   └── setup-venv/              # Action for setting up the Python environment
+│   │       └── action.yml           # Composite action metadata and steps
+│   ├── labs/                        # Hands-on lab guides
+│   │   ├── git-github-collaboration-lab.md  # TP1 instructions
+│   │   └── mlops-project-templating-lab.md # TP2 instructions
+│   └── workflows/                   # Automated GitHub Actions workflows
+│       ├── checkers.yml             # Runs code-quality checks
+│       ├── deploy-to-dev.yml        # Deploys to the development environment
+│       ├── deploy-to-preprod.yml    # Deploys to the pre-production environment
+│       ├── deploy-to-prod.yml       # Deploys to the production environment
+│       └── tests.yml                # Runs the automated test suite
+├── .gitignore                       # Excludes generated files and local secrets from Git
+├── .pre-commit-config.yaml          # Checks run automatically before commits
+├── .python-version                  # Python version used by local tooling
+├── AGENTS.md                        # Guidance for AI coding agents working in the repository
+├── CHANGELOG.md                     # Human-readable record of project changes
+├── CONTRIBUTING.md                  # Contribution and development workflow
+├── docker-compose.yaml              # Local multi-container development configuration
+├── env/                             # Environment-specific, non-secret configuration
+│   ├── dev.env                      # Development environment settings
+│   ├── local.env                    # Local-only settings; do not commit credentials
+│   ├── preprod.env                  # Pre-production environment settings
+│   └── prod.env                     # Production environment settings
+├── LICENSE                          # Project license terms
+├── Makefile                         # Shortcuts for common development tasks
+├── README.md                        # Project overview and setup instructions
+├── pyproject.toml                   # Package metadata, dependencies, and tool settings
+├── uv.lock                          # Locked dependency versions for reproducible installs
+├── docs/                            # Project and technical documentation
+│   └── .gitkeep                     # Keeps this initially empty directory in Git
+├── notebooks/                       # Exploratory analysis and experiments
+│   └── experiments.ipynb            # Example Jupyter notebook
+├── src/                             # Installable Python source code
+│   └── salaries_prediction/         # Main application package
+│       ├── __init__.py              # Package initialization and public entry points
+│       ├── commons/                 # Shared utilities, constants, and exceptions
+│       │   ├── __init__.py          # Marks commons as a Python package
+│       │   ├── constants.py         # Shared application constants
+│       │   ├── exception.py         # Project-specific exceptions
+│       │   └── utils.py             # Reusable helper functions
+│       ├── io/                      # Input and output components
+│       │   ├── __init__.py          # Marks io as a Python package
+│       │   ├── base.py              # Shared input/output interfaces
+│       │   ├── reader.py            # Data-reading operations
+│       │   └── writer.py            # Data-writing operations
+│       ├── job/                     # Training, batch, or inference jobs
+│       │   └── __init__.py          # Marks job as a Python package
+│       └── scripts.py               # Command-line script entry points
+├── tasks/                           # Makefile task definitions
+│   ├── checkers.mk                  # Static analysis and validation targets
+│   ├── formatters.mk                # Formatting targets
+│   ├── helpers.mk                   # Shared Makefile helper targets
+│   ├── installers.mk                # Dependency and tool installation targets
+│   └── inits.mk                     # Project initialization targets
+└── tests/                           # Automated test suites
+    ├── e2e_tests/                   # End-to-end tests across the application
+    │   └── __init__.py              # Marks e2e_tests as a Python package
+    ├── integration_tests/           # Tests across connected components
+    │   └── __init__.py              # Marks integration_tests as a Python package
+    └── unit_tests/                  # Tests for individual units of code
+        └── __init__.py              # Marks unit_tests as a Python package
 ```
+
+The comments describe the intended purpose of each entry. `.env` and `env/local.env` are local-only files and must not contain committed credentials. Although the tree shows them to explain the layout, `.gitignore` excludes them from version control.
 
 #### 3.1.1 Initialize the Python Package
 
@@ -405,8 +438,9 @@ touch .github/workflows/deploy-to-dev.yml
 touch .github/workflows/deploy-to-preprod.yml
 touch .github/workflows/deploy-to-prod.yml
 touch .github/workflows/tests.yml
-touch .pre-commit-config.yaml AGENTS.md Makefile CONTRIBUTING.md
-touch notebooks/experiments.ipynb
+touch .pre-commit-config.yaml AGENTS.md Makefile CONTRIBUTING.md CHANGELOG.md docker-compose.yaml
+touch notebooks/experiments.ipynb .env.examples .dockerignore .env
+touch .agents/skills/.gitkeep docs/.gitkeep
 touch env/local.env env/dev.env env/preprod.env env/prod.env
 touch src/salaries_prediction/__init__.py
 touch src/salaries_prediction/scripts.py
@@ -427,6 +461,8 @@ touch tests/e2e_tests/__init__.py
 ```
 
 The `.gitignore`, `LICENSE`, `pyproject.toml`, and `README.md` files should already exist from repository setup and Python initialization.
+
+The `.env` and `env/local.env` files are for local settings only. Keep real credentials out of Git; use placeholders in example files and a secret manager for actual secrets.
 
 ### 3.4 Verify the Structure
 
