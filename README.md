@@ -123,5 +123,3 @@ Keep the working tree clean whenever a practical step is completed. Review chang
 | Create a branch | `git switch -c <branch-name>` |
 | Switch branches | `git switch <branch-name>` |
 | Push a branch | `git push -u origin <branch-name>` |
-
-
